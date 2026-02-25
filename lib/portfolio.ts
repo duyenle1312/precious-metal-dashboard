@@ -12,10 +12,12 @@ export function calculatePortfolioValue(prices: MetalPrices) {
     silverAussie: portfolio.silver * (prices.silverAussie || 0),
     silverBritannia: portfolio.silver * (prices.silverBritannia || 0),
     silverLunarHorse: portfolio.silver * (prices.silverLunarHorse || 0),
+    silverLibertad: portfolio.silver * (prices.silverLibertad || 0),
     tavex1gGold: portfolio.gold * (prices.tavex1gGold || 0),
 
     gold: prices.tavex1gGold || 0,
-    
+    topgold10gGold: prices.topgold10gGold || 0,
+
     silver:
       prices.silverEagle +
       prices.silverCanadian +

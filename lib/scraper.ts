@@ -48,6 +48,13 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
         .replace(/[^0-9.]/g, ""),
     ) || 0;
 
+  const silverLibertad =
+    parseFloat(
+      $("span.type-outer.obnovi.catE-548")
+        .text()
+        .replace(/[^0-9.]/g, ""),
+    ) || 0;
+
   res = await fetch("https://tavex.bg/en/gold/1-gram-tavex-gold-bar/", {
     headers: {
       "User-Agent": "Mozilla/5.0 Portfolio Tracker",
@@ -67,11 +74,37 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
       $("span.product-poster__table-label.product-poster__table-label--2")
         .text()
         .trim()
-        .split("\n")[2].trim()
+        .split("\n")[2]
+        .trim()
         .replace(",", ".")
-        .replace(/[^\d.]/g, "")
+        .replace(/[^\d.]/g, ""),
     ) || 0;
 
+  res = await fetch(
+    "https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
+    {
+      headers: {
+        "User-Agent": "Mozilla/5.0 Portfolio Tracker",
+      },
+      cache: "no-store",
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch dealer prices");
+  }
+
+  html = await res.text();
+  $ = cheerio.load(html);
+
+  const topgold10gGold =
+    parseFloat(
+      $("span.woocommerce-Price-amount.amount.dynamic-price-sell-869")
+        .text()
+        .trim()
+        .replace(",", ".")
+        .replace(/[^\d.]/g, ""),
+    ) || 0;
 
   if (
     [
@@ -80,6 +113,7 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
       silverAussie,
       silverBritannia,
       silverLunarHorse,
+      silverLibertad,
       tavex1gGold,
     ].some(isNaN)
   ) {
@@ -92,6 +126,9 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
     silverAussie,
     silverBritannia,
     silverLunarHorse,
+    silverLibertad,
+
     tavex1gGold,
+    topgold10gGold,
   };
 }
