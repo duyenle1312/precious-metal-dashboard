@@ -1,19 +1,6 @@
 import { calculatePortfolioValue } from "@/lib/portfolio";
 import { getPrices } from "@/lib/prices";
 
-
-// async function getPrices() {
-//   const res = await fetch("http://localhost:3000/api/prices", {
-//     cache: "no-store",
-//   });
-
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch prices");
-//   }
-
-//   return res.json();
-// }
-
 export default async function Dashboard() {
   const { prices, source } = await getPrices();
 
@@ -39,7 +26,7 @@ export default async function Dashboard() {
           <p className="text-gray-700">
             Tavex 1g Gold:
             <span className="font-semibold ml-2">
-              ${values.gold.toFixed(2)}
+              €{values.gold.toFixed(2)}
             </span>
           </p>
         </div>
@@ -51,16 +38,16 @@ export default async function Dashboard() {
           <p className="mb-3 text-gray-700">
             Total Value:
             <span className="font-semibold ml-2">
-              ${values.silver.toFixed(2)}
+              €{values.silver.toFixed(2)}
             </span>
           </p>
 
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-            <li>Eagle: ${values.silverEagle.toFixed(2)}</li>
-            <li>Canadian: ${values.silverCanadian.toFixed(2)}</li>
-            <li>Australia: ${values.silverAussie.toFixed(2)}</li>
-            <li>Britannia: ${values.silverBritannia.toFixed(2)}</li>
-            <li>Lunar Horse: ${values.silverLunarHorse.toFixed(2)}</li>
+            <li>Eagle: €{values.silverEagle.toFixed(2)}</li>
+            <li>Canadian: €{values.silverCanadian.toFixed(2)}</li>
+            <li>Australia: €{values.silverAussie.toFixed(2)}</li>
+            <li>Britannia: €{values.silverBritannia.toFixed(2)}</li>
+            <li>Lunar Horse: €{values.silverLunarHorse.toFixed(2)}</li>
           </ul>
         </div>
       </div>
@@ -69,7 +56,7 @@ export default async function Dashboard() {
       <div className="mt-6 border-t pt-4 space-y-2">
         <p className="text-gray-700">
           Original Cost:
-          <span className="font-semibold ml-2">$652.29</span>
+          <span className="font-semibold ml-2">€652.29</span>
         </p>
 
         <p className="text-gray-700">
@@ -89,7 +76,7 @@ export default async function Dashboard() {
       <div className="mt-6 text-center">
         <h2 className="font-bold text-lg mb-1">Total Portfolio Value</h2>
         <p className="text-3xl font-bold text-indigo-600">
-          ${values.total.toFixed(2)}
+          €{values.total.toFixed(2)}
         </p>
       </div>
     </div>
