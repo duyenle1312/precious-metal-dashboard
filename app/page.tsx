@@ -1,16 +1,18 @@
 import { calculatePortfolioValue } from "@/lib/portfolio";
+import { getPrices } from "@/lib/prices";
 
-async function getPrices() {
-  const res = await fetch("http://localhost:3000/api/prices", {
-    cache: "no-store",
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch prices");
-  }
+// async function getPrices() {
+//   const res = await fetch("http://localhost:3000/api/prices", {
+//     cache: "no-store",
+//   });
 
-  return res.json();
-}
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch prices");
+//   }
+
+//   return res.json();
+// }
 
 export default async function Dashboard() {
   const { prices, source } = await getPrices();
