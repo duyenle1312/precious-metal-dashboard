@@ -48,12 +48,12 @@ export default async function Dashboard() {
           </p>
 
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-            <li>American Eagle: €{values.silverEagle.toFixed(2)}</li>
+            <li>Eagle: €{values.silverEagle.toFixed(2)}</li>
             <li>Canadian: €{values.silverCanadian.toFixed(2)}</li>
             <li>Britannia: €{values.silverBritannia.toFixed(2)}</li>
-            <li>Australian Kangaroo: €{values.silverAussie.toFixed(2)}</li>
+            <li>Australian: €{values.silverAussie.toFixed(2)}</li>
             <li>Lunar Horse: €{values.silverLunarHorse.toFixed(2)}</li>
-            <li>Mexican Libertad (buy): €{values.silverLibertad.toFixed(2)}</li>
+            <li>Libertad (buy): €{values.silverLibertad.toFixed(2)}</li>
           </ul>
         </div>
       </div>
