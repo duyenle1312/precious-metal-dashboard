@@ -4,6 +4,8 @@ import { getPrices } from "@/lib/prices";
 export default async function Dashboard() {
   const { prices, source } = await getPrices();
 
+  const originalCost = 652.29 + 1543;
+
   const values = calculatePortfolioValue(prices);
 
   return (
@@ -63,18 +65,18 @@ export default async function Dashboard() {
       <div className="mt-6 border-t pt-4 space-y-2">
         <p className="text-gray-700">
           Original Cost:
-          <span className="font-semibold ml-2">€652.29</span>
+          <span className="font-semibold ml-2">€{originalCost.toFixed(2)}</span>
         </p>
 
         <p className="text-gray-700">
           <span className="font-semibold">Unrealized Gain:</span>{" "}
           <span
             className={
-              values.total - 652.29 >= 0 ? "text-green-600" : "text-red-600"
+              values.total - originalCost >= 0 ? "text-green-600" : "text-red-600"
             }
           >
-            {(values.total - 652.29).toFixed(2)} (
-            {(((values.total - 652.29) / 652.29) * 100).toFixed(2)}%)
+            {(values.total - originalCost).toFixed(2)} (
+            {(((values.total - originalCost) / originalCost) * 100).toFixed(2)}%)
           </span>
         </p>
       </div>

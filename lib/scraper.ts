@@ -99,7 +99,7 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
 
   const topgold10gGold =
     parseFloat(
-      $("span.woocommerce-Price-amount.amount.dynamic-price-sell-869")
+      $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
         .text()
         .trim()
         .replace(",", ".")

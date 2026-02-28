@@ -26,6 +26,7 @@ export function calculatePortfolioValue(prices: MetalPrices) {
       prices.silverLunarHorse,
 
     total:
+      prices.topgold10gGold +
       prices.tavex1gGold +
       prices.silverEagle +
       prices.silverCanadian +
