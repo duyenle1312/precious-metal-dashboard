@@ -4,7 +4,7 @@ import { getPrices } from "@/lib/prices";
 export default async function Dashboard() {
   const { prices, source } = await getPrices();
 
-  const originalCost = 652.29 + 1543;
+  const originalCost = 652.29 + 1531.24;
 
   const values = calculatePortfolioValue(prices);
 
