@@ -81,7 +81,7 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
     ) || 0;
 
   res = await fetch(
-    "https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
+    "https://igold.bg", //"https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
     {
       headers: {
         "User-Agent": "Mozilla/5.0 Portfolio Tracker",
@@ -99,12 +99,19 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
 
   const topgold10gGold =
     parseFloat(
-      $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
+      $("span.type-outer.obnovi.cat2E-238")
         .text()
-        .trim()
-        .replace(",", ".")
-        .replace(/[^\d.]/g, ""),
+        .replace(/[^0-9.]/g, ""),
     ) || 0;
+
+  // const topgold10gGold =
+  //   parseFloat(
+  //     $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
+  //       .text()
+  //       .trim()
+  //       .replace(",", ".")
+  //       .replace(/[^\d.]/g, ""),
+  //   ) || 0;
 
   if (
     [
