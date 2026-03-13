@@ -50,7 +50,7 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
 
   const silverLibertad =
     parseFloat(
-      $("span.type-outer.obnovi.catE-548")
+      $("span.type-outer.obnovi.cat2E-548")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;

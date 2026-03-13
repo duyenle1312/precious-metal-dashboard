@@ -6,6 +6,16 @@ const portfolio = {
 };
 
 export function calculatePortfolioValue(prices: MetalPrices) {
+  const silver =
+    prices.silverEagle * 2 +
+    prices.silverCanadian * 2 +
+    prices.silverAussie +
+    prices.silverBritannia +
+    prices.silverLunarHorse +
+    prices.silverLibertad;
+
+  const gold = prices.tavex1gGold + prices.topgold10gGold;
+
   return {
     silverEagle: portfolio.silver * (prices.silverEagle || 0),
     silverCanadian: portfolio.silver * (prices.silverCanadian || 0),
@@ -17,22 +27,10 @@ export function calculatePortfolioValue(prices: MetalPrices) {
     tavex1gGold: prices.tavex1gGold || 0,
     topgold10gGold: prices.topgold10gGold || 0,
 
-    gold: (prices.tavex1gGold || 0) + (prices.topgold10gGold || 0),
+    gold: gold,
 
-    silver:
-      prices.silverEagle +
-      prices.silverCanadian +
-      prices.silverAussie +
-      prices.silverBritannia +
-      prices.silverLunarHorse,
+    silver: silver,
 
-    total:
-      prices.topgold10gGold +
-      prices.tavex1gGold +
-      prices.silverEagle +
-      prices.silverCanadian +
-      prices.silverAussie +
-      prices.silverBritannia +
-      prices.silverLunarHorse,
+    total: gold + silver,
   };
 }
