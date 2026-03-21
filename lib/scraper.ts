@@ -80,8 +80,8 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
         .replace(/[^\d.]/g, ""),
     ) || 0;
 
-  res = await fetch(
-    "https://igold.bg", //"https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
+  res = await fetch( // "https://igold.bg", //
+    "https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
     {
       headers: {
         "User-Agent": "Mozilla/5.0 Portfolio Tracker",
@@ -97,21 +97,21 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
   html = await res.text();
   $ = cheerio.load(html);
 
-  const topgold10gGold =
-    parseFloat(
-      $("span.type-outer.obnovi.cat2E-238")
-        .text()
-        .replace(/[^0-9.]/g, ""),
-    ) || 0;
-
   // const topgold10gGold =
   //   parseFloat(
-  //     $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
+  //     $("span.type-outer.obnovi.cat2E-238")
   //       .text()
-  //       .trim()
-  //       .replace(",", ".")
-  //       .replace(/[^\d.]/g, ""),
+  //       .replace(/[^0-9.]/g, ""),
   //   ) || 0;
+
+  const topgold10gGold =
+    parseFloat(
+      $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
+        .text()
+        .trim()
+        .replace(",", ".")
+        .replace(/[^\d.]/g, ""),
+    ) || 0;
 
   if (
     [

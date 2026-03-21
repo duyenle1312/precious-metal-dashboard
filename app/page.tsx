@@ -49,11 +49,11 @@ export default async function Dashboard() {
 
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
             <li>Eagle: €{values.silverEagle.toFixed(2)} x 2</li>
-            <li>Canadian: €{values.silverCanadian.toFixed(2)}</li>
+            <li>Canadian: €{values.silverCanadian.toFixed(2)} x 2</li>
             <li>Britannia: €{values.silverBritannia.toFixed(2)}</li>
             <li>Australian: €{values.silverAussie.toFixed(2)}</li>
             <li>2026 Horse: €{values.silverLunarHorse.toFixed(2)}</li>
-            <li>Libertad: €{values.silverLibertad.toFixed(2)} x 2</li>
+            <li>Libertad: €{values.silverLibertad.toFixed(2)}</li>
           </ul>
         </div>
       </div>
