@@ -11,7 +11,7 @@ export type MetalPrices = {
   silverLunarHorse: number;
   silverLibertad: number;
   tavex1gGold: number;
-  topgold10gGold: number;
+  kinebar10gGold: number;
   gold?: number;
   silver?: number;
   platinum?: number;

@@ -14,7 +14,7 @@ export function calculatePortfolioValue(prices: MetalPrices) {
     prices.silverLunarHorse +
     prices.silverLibertad;
 
-  const gold = prices.tavex1gGold + prices.topgold10gGold;
+  const gold = prices.tavex1gGold + prices.kinebar10gGold;
 
   return {
     silverEagle: portfolio.silver * (prices.silverEagle || 0),
@@ -25,7 +25,7 @@ export function calculatePortfolioValue(prices: MetalPrices) {
     silverLibertad: portfolio.silver * (prices.silverLibertad || 0),
 
     tavex1gGold: prices.tavex1gGold || 0,
-    topgold10gGold: prices.topgold10gGold || 0,
+    kinebar10gGold: prices.kinebar10gGold || 0,
 
     gold: gold,
 

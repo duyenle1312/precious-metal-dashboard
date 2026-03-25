@@ -31,7 +31,7 @@ export default async function Dashboard() {
           </p>
 
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-            <li>Kinebar 10g: €{values.topgold10gGold}</li>
+            <li>Kinebar 10g: €{values.kinebar10gGold}</li>
             <li>Tavex 1g: €{values.tavex1gGold}</li>
           </ul>
         </div>

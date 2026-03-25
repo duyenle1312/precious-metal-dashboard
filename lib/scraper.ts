@@ -41,7 +41,7 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
         .replace(/[^0-9.]/g, ""),
     ) || 0;
 
-  const silverLunarHorse =
+  let silverLunarHorse =
     parseFloat(
       $("span.type-outer.obnovi.cat2E-599")
         .text()
@@ -55,6 +55,38 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
         .replace(/[^0-9.]/g, ""),
     ) || 0;
 
+  if (silverLunarHorse === 0) {
+    // Lunar Horse 2026
+    res = await fetch(
+      "https://tavex.bg/en/silver/1-oz-australian-lunar-year-of-the-horse-2026-silver-coin/",
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 Portfolio Tracker",
+        },
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch dealer prices");
+    }
+
+    html = await res.text();
+    $ = cheerio.load(html);
+
+    silverLunarHorse =
+      parseFloat(
+        $("span.product-poster__table-label.product-poster__table-label--2")
+          .text()
+          .trim()
+          .split("\n")[2]
+          .trim()
+          .replace(",", ".")
+          .replace(/[^\d.]/g, ""),
+      ) || 0;
+  }
+
+  // 1g gold Tavex
   res = await fetch("https://tavex.bg/en/gold/1-gram-tavex-gold-bar/", {
     headers: {
       "User-Agent": "Mozilla/5.0 Portfolio Tracker",
@@ -80,7 +112,9 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
         .replace(/[^\d.]/g, ""),
     ) || 0;
 
-  res = await fetch( // "https://igold.bg", //
+  // 10g gold Kinebar
+  res = await fetch(
+    // "https://igold.bg", //
     "https://topgold.bg/product/10-grama-zlatno-kyulche-argor-heraeus-kinebar/",
     {
       headers: {
@@ -97,14 +131,14 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
   html = await res.text();
   $ = cheerio.load(html);
 
-  // const topgold10gGold =
+  // const kinebar10gGold =
   //   parseFloat(
   //     $("span.type-outer.obnovi.cat2E-238")
   //       .text()
   //       .replace(/[^0-9.]/g, ""),
   //   ) || 0;
 
-  const topgold10gGold =
+  const kinebar10gGold =
     parseFloat(
       $("span.woocommerce-Price-amount.amount.dynamic-price-buy-869")
         .text()
@@ -136,6 +170,6 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
     silverLibertad,
 
     tavex1gGold,
-    topgold10gGold,
+    kinebar10gGold,
   };
 }
