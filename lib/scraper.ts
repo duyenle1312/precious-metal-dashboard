@@ -18,39 +18,39 @@ export async function scrapeDealerPrices(): Promise<MetalPrices> {
 
   const silverEagle =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-547")
+      $("span.type-outer.obnovi.cat2-547")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
   const silverCanadian =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-515")
+      $("span.type-outer.obnovi.cat2-515")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
   const silverAussie =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-516")
+      $("span.type-outer.obnovi.cat2-516")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
   const silverBritannia =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-711")
+      $("span.type-outer.obnovi.cat2-711")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
 
   let silverLunarHorse =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-599")
+      $("span.type-outer.obnovi.cat2-599")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
 
   const silverLibertad =
     parseFloat(
-      $("span.type-outer.obnovi.cat2E-548")
+      $("span.type-outer.obnovi.cat2-548")
         .text()
         .replace(/[^0-9.]/g, ""),
     ) || 0;
